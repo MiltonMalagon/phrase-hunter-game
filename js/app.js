@@ -4,16 +4,7 @@
 
 const game = new Game();
 
-// document.querySelector("#btn__reset").addEventListener("click", e => {
-//     game.startGame();
-//     console.log(e.target)
-// });
+const random_phrase = game.getRandomPhrase();
+const phrase = new Phrase(random_phrase.phrase);
 
-// document.addEventListener("click", e => {
-//     if (e.target.className === "key") {
-//         game.handleInteraction();
-//     }
-// });
-
-// const phrase = new Phrase("Life is great when I'm coding!");
-// game.phrases.forEach((phrase, index) => console.log(`Phrase ${index} - phrase: ${phrase.phrase}`));
+phrase.addPhraseToDisplay();
