@@ -28,10 +28,25 @@ class Phrase {
         }
     }
 
-    checkLetter() {
-
+    /**
+     * Checks if passed letter is in phrase.
+     * @param {string} letter - Letter to check.
+    **/
+    checkLetter(letter) {
+        for (let match of this.phrase) {
+            if (letter === match) {
+                this.showMatchedLetter(letter);
+            }
+        }
     }
 
-    showMatchedLetter() {
+    /**
+     * Displays passed letter on screen after a match is found
+     * @param {string} letter - Letter to display.
+    **/
+    showMatchedLetter(letter) {
+        const letters = document.querySelectorAll("#phrase li");
+        
+        // letters.filter(letter => );
     }
 }

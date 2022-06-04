@@ -6,17 +6,29 @@ class Game {
     constructor() {
         this.missed = 0; //Number of missed guesses.
         this.phrases = [
-            new Phrase("By the Power of Greyskull"), 
-            new Phrase("Eat My Shorts"), 
-            new Phrase("Cowabunga"), 
-            new Phrase("Whats Up Doc"), 
-            new Phrase("To Infinity and Beyond")
+            new Phrase("Fortune favors the bold"), 
+            new Phrase("Genius is eternal patience"), 
+            new Phrase("Practice makes perfect"), 
+            new Phrase("Knowledge is power"), 
+            new Phrase("Simplicity is the ultimate sophistication")
         ]; // Array of phrase objects.
         this.activePhrase = null; // Phrase object currently in play.
     }
 
+    /**
+     * Begins game by selecting a random phrase and displaying it to user. 
+    **/
     startGame() {
+        const overlay = document.querySelector("#overlay");
+        const reset = document.querySelector("#btn__reset");
 
+        reset.addEventListener("click", () => {
+            let phrase = this.getRandomPhrase();
+
+            overlay.style.display = "none";
+            this.activePhrase = phrase;            
+            phrase.addPhraseToDisplay();
+        });
     }
 
     /**
@@ -30,7 +42,17 @@ class Game {
     }
 
     handleInteraction() {
+        const keyboard = document.querySelector("#qwerty");
 
+        keyboard.addEventListener("click", e => {
+            let key = e.target;
+
+            if (key.tagName === "BUTTON" && key.className === "key") {
+                let letter = key.textContent;
+                
+                this.activePhrase.checkLetter(letter);
+            }
+        });
     }
 
     removeLife() {

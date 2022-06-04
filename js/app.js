@@ -4,7 +4,10 @@
 
 const game = new Game();
 
-const random_phrase = game.getRandomPhrase();
-const phrase = new Phrase(random_phrase.phrase);
+// const random_phrase = game.getRandomPhrase();
+// const phrase = new Phrase(random_phrase.phrase);
 
-phrase.addPhraseToDisplay();
+// phrase.addPhraseToDisplay();
+
+game.startGame();
+game.handleInteraction();
