@@ -20,15 +20,11 @@ class Game {
     **/
     startGame() {
         const overlay = document.querySelector("#overlay");
-        const reset = document.querySelector("#btn__reset");
+        let phrase = this.getRandomPhrase();
 
-        reset.addEventListener("click", () => {
-            let phrase = this.getRandomPhrase();
-
-            overlay.style.display = "none";
-            this.activePhrase = phrase;            
-            phrase.addPhraseToDisplay();
-        });
+        overlay.style.display = "none";
+        this.activePhrase = phrase;            
+        phrase.addPhraseToDisplay();
     }
 
     /**
