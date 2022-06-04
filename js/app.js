@@ -8,12 +8,5 @@ document.querySelector("#btn__reset").addEventListener("click", () => {
     game = new Game();
 
     game.startGame();
+    game.handleInteraction();
 });
-
-// const random_phrase = game.getRandomPhrase();
-// const phrase = new Phrase(random_phrase.phrase);
-
-// phrase.addPhraseToDisplay();
-
-// game.startGame();
-// game.handleInteraction();

@@ -45,8 +45,16 @@ class Phrase {
      * @param {string} letter - Letter to display.
     **/
     showMatchedLetter(letter) {
-        const letters = document.querySelectorAll("#phrase li");
-        
-        // letters.filter(letter => );
+        const lis = document.querySelectorAll("#phrase .letter");
+
+        lis.forEach(item => {
+            let classes = item.classList;
+
+            for (let class_name of classes) {
+                if (class_name === letter) {
+                    classes.replace("hide", "show");
+                }
+            }
+        });
     }
 }
