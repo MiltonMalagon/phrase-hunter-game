@@ -48,6 +48,8 @@ class Game {
                 
                 this.activePhrase.checkLetter(letter);
             }
+
+            this.checkForWin();
         });
     }
 
@@ -55,8 +57,33 @@ class Game {
 
     }
 
+    /**
+     * Checks for winning move.
+     * @return {boolean} true if game has been won, false if game wasn't won.
+    **/
     checkForWin() {
 
+        // Think better var names.
+        const hidden = document.querySelectorAll("#phrase .hide"); 
+        const showed = [];
+
+        for (let letter of hidden) {
+            let classes = letter.classList;
+
+            for (let show of classes) {
+                if (show === "show") {
+                    showed.push(letter);
+                }
+            }
+        }
+
+        if (showed.length === hidden.length) {
+            console.log("true");
+            return true;
+        } else {
+            console.log("false");
+            return false;
+        }
     }
 
     gameOver() {

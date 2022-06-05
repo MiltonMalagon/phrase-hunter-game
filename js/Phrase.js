@@ -45,13 +45,13 @@ class Phrase {
      * @param {string} letter - Letter to display.
     **/
     showMatchedLetter(letter) {
-        const lis = document.querySelectorAll("#phrase .letter");
+        const placeholders = document.querySelectorAll("#phrase .letter");
 
-        lis.forEach(item => {
-            let classes = item.classList;
+        placeholders.forEach(placeholder => {
+            let classes = placeholder.classList;
 
-            for (let class_name of classes) {
-                if (class_name === letter) {
+            for (let letter_class of classes) {
+                if (letter_class === letter) {
                     classes.replace("hide", "show");
                 }
             }
