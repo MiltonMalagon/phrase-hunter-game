@@ -7,7 +7,7 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
 
-    /**
+    /** Checked
      * Displays phrase on game board.
     **/
     addPhraseToDisplay() {
@@ -45,15 +45,13 @@ class Phrase {
      * @param {string} letter - Letter to display.
     **/
     showMatchedLetter(letter) {
-        const placeholders = document.querySelectorAll("#phrase .letter");
+        const placeholders = document.querySelectorAll("#phrase li");
 
         placeholders.forEach(placeholder => {
             let classes = placeholder.classList;
 
-            for (let letter_class of classes) {
-                if (letter_class === letter) {
-                    classes.replace("hide", "show");
-                }
+            if (classes.contains(letter)) {
+                classes.replace("hide", "show");
             }
         });
     }

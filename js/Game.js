@@ -15,7 +15,7 @@ class Game {
         this.activePhrase = null; // Phrase object currently in play.
     }
 
-    /**
+    /** Checked
      * Begins game by selecting a random phrase and displaying it to user. 
     **/
     startGame() {
@@ -27,7 +27,7 @@ class Game {
         phrase.addPhraseToDisplay();
     }
 
-    /**
+    /** Checked
      * Selects random phrase from phrases property.
      * @return {Object} Phrase object chosen to be used.
     **/
@@ -62,26 +62,19 @@ class Game {
      * @return {boolean} true if game has been won, false if game wasn't won.
     **/
     checkForWin() {
+        const active_letters = this.activePhrase.phrase.replace(/\s+/gi, "").split("");
+        const hidden_letters = document.querySelectorAll("#phrase li");
+        const showed_letters = [];
 
-        // Think better var names.
-        const hidden = document.querySelectorAll("#phrase .hide"); 
-        const showed = [];
-
-        for (let letter of hidden) {
-            let classes = letter.classList;
-
-            for (let show of classes) {
-                if (show === "show") {
-                    showed.push(letter);
-                }
+        hidden_letters.forEach(letter => {
+            if (letter.classList.contains("show")) {
+                showed_letters.push(letter.textContent);
             }
-        }
+        });
 
-        if (showed.length === hidden.length) {
-            console.log("true");
+        if (showed_letters.length === active_letters.length) {
             return true;
         } else {
-            console.log("false");
             return false;
         }
     }
