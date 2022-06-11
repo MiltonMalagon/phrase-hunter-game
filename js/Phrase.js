@@ -33,10 +33,10 @@ class Phrase {
      * @param {string} letter - Letter to check.
     **/
     checkLetter(letter) {
-        for (let match of this.phrase) {
-            if (letter === match) {
-                this.showMatchedLetter(letter);
-            }
+        if (this.phrase.includes(letter)) {
+            return true;
+        } else {
+            return false;
         }
     }
 

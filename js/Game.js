@@ -37,24 +37,38 @@ class Game {
         return this.phrases[random];
     }
 
-    handleInteraction() {
-        const keyboard = document.querySelector("#qwerty");
+    /**
+     * Handles onscreen keyboard button clicks.
+     * @param {HTMLButtonElement} button - The clicked button element.
+     */
+    handleInteraction(button) {
+        let letter = button.textContent;
+        let match = this.activePhrase.checkLetter(letter);
 
-        keyboard.addEventListener("click", e => {
-            let key = e.target;
+        button.disabled = true;
 
-            if (key.tagName === "BUTTON" && key.className === "key") {
-                let letter = key.textContent;
-                
-                this.activePhrase.checkLetter(letter);
-            }
-
+        if (match) {
+            button.classList.add("chosen");
+            this.activePhrase.showMatchedLetter(letter);
             this.checkForWin();
-        });
+
+            if (this.checkForWin()) {
+                this.gameOver();
+            }
+        } else {
+            button.classList.add("wrong");
+            this.removeLife();
+        }
     }
 
+    /**
+     * Increases the value of the missed property.
+     * Removes a life from the scoreboard.
+     * Checks if player has remaining lives and ends the game if players is out.
+    **/
     removeLife() {
 
+        
     }
 
     /**
@@ -73,8 +87,10 @@ class Game {
         });
 
         if (showed_letters.length === active_letters.length) {
+            // console.log(true);
             return true;
         } else {
+            // console.log(false);
             return false;
         }
     }
