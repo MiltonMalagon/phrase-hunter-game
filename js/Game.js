@@ -46,6 +46,7 @@ class Game {
         let match = this.activePhrase.checkLetter(letter);
 
         button.disabled = true;
+        // console.log(button);
 
         if (match) {
             button.classList.add("chosen");
@@ -67,8 +68,16 @@ class Game {
      * Checks if player has remaining lives and ends the game if players is out.
     **/
     removeLife() {
-
+        const lives = Array.from(document.querySelectorAll("#scoreboard img"));
+        const live = lives.find(live => live.getAttribute("src") === "images/liveHeart.png");
         
+        this.missed++;
+        console.log(live);
+        live.setAttribute("src", "images/lostHeart.png");
+
+        if (this.missed === 5) {
+            this.gameOver();
+        }
     }
 
     /**
