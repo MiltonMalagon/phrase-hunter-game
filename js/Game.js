@@ -47,12 +47,12 @@ class Game {
         let match = this.activePhrase.checkLetter(letter);
 
         button.disabled = true;
-        console.log(button);
+        // console.log(button);
 
         if (match) {
             button.classList.add("chosen");
             this.activePhrase.showMatchedLetter(letter);
-            this.checkForWin();
+            // this.checkForWin();
 
             if (this.checkForWin()) {
                 this.gameOver(true);
@@ -85,23 +85,39 @@ class Game {
      * @return {boolean} true if game has been won, false if game wasn't won.
     **/
     checkForWin() {
-        const active_letters = this.activePhrase.phrase.replace(/\s+/gi, "").split("");
-        const hidden_letters = document.querySelectorAll("#phrase li");
-        const showed_letters = [];
+        const showed = Array.from(document.querySelectorAll("#phrase li"))
+        .filter(letter => letter.classList.contains("show"));
+        const phrase = this.activePhrase.phrase.replace(/\s/g, "");
 
-        hidden_letters.forEach(letter => {
-            if (letter.classList.contains("show")) {
-                showed_letters.push(letter.textContent);
-            }
-        });
-
-        if (showed_letters.length === active_letters.length) {
-            // console.log(true);
+        if (showed.length === phrase.length) {
             return true;
         } else {
-            // console.log(false);
             return false;
         }
+
+        // --------------------------------------
+        // const phrase = this.activePhrase.phrase.length;
+        // const placeholders = Array.from(document.querySelectorAll("#phrase li"));
+        // const showed = placeholders.filter(placeholder => placeholder.classList.contains("show"));
+
+        // --------------------------------------
+        // const active_letters = this.activePhrase.phrase.replace(/\s+/gi, "").split("");
+        // const hidden_letters = document.querySelectorAll("#phrase li");
+        // const showed_letters = [];
+
+        // hidden_letters.forEach(letter => {
+        //     if (letter.classList.contains("show")) {
+        //         showed_letters.push(letter.textContent);
+        //     }
+        // });
+
+        // if (showed_letters.length === active_letters.length) {
+        //     console.log(true);
+        //     return true;
+        // } else {
+        //     console.log(false);
+        //     return false;
+        // }
     }
 
     /**
