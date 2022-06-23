@@ -14,13 +14,13 @@ class Game {
         ]; // Array of phrase objects.
         this.activePhrase = null; // Phrase object currently in play.
         this.overlay = document.querySelector("#overlay");
+        this.lives = Array.from(document.querySelectorAll("#scoreboard img"));
     }
 
     /** Checked
      * Begins game by selecting a random phrase and displaying it to user. 
     **/
     startGame() {
-        // const overlay = document.querySelector("#overlay");
         let phrase = this.getRandomPhrase();
 
         this.overlay.style.display = "none";
@@ -47,12 +47,10 @@ class Game {
         let match = this.activePhrase.checkLetter(letter);
 
         button.disabled = true;
-        // console.log(button);
 
         if (match) {
             button.classList.add("chosen");
             this.activePhrase.showMatchedLetter(letter);
-            // this.checkForWin();
 
             if (this.checkForWin()) {
                 this.gameOver(true);
@@ -64,29 +62,11 @@ class Game {
     }
 
     /**
-     * Increases the value of the missed property.
-     * Removes a life from the scoreboard.
-     * Checks if player has remaining lives and ends the game if players is out.
-    **/
-    removeLife() {
-        const lives = Array.from(document.querySelectorAll("#scoreboard img"));
-        const live = lives.find(live => live.getAttribute("src") === "images/liveHeart.png");
-        
-        this.missed++;
-        live.setAttribute("src", "images/lostHeart.png");
-
-        if (this.missed >= 5) {
-            this.gameOver(false);
-        }
-    }
-
-    /**
      * Checks for winning move.
      * @return {boolean} true if game has been won, false if game wasn't won.
     **/
-    checkForWin() {
-        const showed = Array.from(document.querySelectorAll("#phrase li"))
-        .filter(letter => letter.classList.contains("show"));
+     checkForWin() {
+        const showed = Array.from(document.querySelectorAll("#phrase li")).filter(letter => letter.classList.contains("show"));
         const phrase = this.activePhrase.phrase.replace(/\s/g, "");
 
         if (showed.length === phrase.length) {
@@ -94,30 +74,22 @@ class Game {
         } else {
             return false;
         }
+    }
 
-        // --------------------------------------
-        // const phrase = this.activePhrase.phrase.length;
-        // const placeholders = Array.from(document.querySelectorAll("#phrase li"));
-        // const showed = placeholders.filter(placeholder => placeholder.classList.contains("show"));
+    /**
+     * Increases the value of the missed property.
+     * Removes a life from the scoreboard.
+     * Checks if player has remaining lives and ends the game if players is out.
+    **/
+    removeLife() {
+        const live = this.lives.find(live => live.getAttribute("src") === "images/liveHeart.png");
+        
+        this.missed++;
+        live.setAttribute("src", "images/lostHeart.png");
 
-        // --------------------------------------
-        // const active_letters = this.activePhrase.phrase.replace(/\s+/gi, "").split("");
-        // const hidden_letters = document.querySelectorAll("#phrase li");
-        // const showed_letters = [];
-
-        // hidden_letters.forEach(letter => {
-        //     if (letter.classList.contains("show")) {
-        //         showed_letters.push(letter.textContent);
-        //     }
-        // });
-
-        // if (showed_letters.length === active_letters.length) {
-        //     console.log(true);
-        //     return true;
-        // } else {
-        //     console.log(false);
-        //     return false;
-        // }
+        if (this.missed >= 5) {
+            this.gameOver(false);
+        }
     }
 
     /**
@@ -131,10 +103,36 @@ class Game {
 
         if (gameWon) {
             this.overlay.className = "win";
-            message.textContent = "Great job!";         
+            message.textContent = "Great job!";
+            this.resetGame();       
         } else {
             this.overlay.className = "lose";
-            message.textContent = "Sorry, better luck next time!"
+            message.textContent = "Sorry, better luck next time!";
+            this.resetGame();
+        }
+    }
+
+    /**
+     * Resets game.
+    **/
+    resetGame() {
+        const letters = document.querySelectorAll("#phrase li");
+        const keys = document.querySelectorAll(".key");
+
+        this.missed = 0;
+        this.activePhrase = null;
+
+        for (let letter of letters) {
+            letter.remove();
+        }
+
+        for (let key of keys) {
+            key.classList.remove("chosen", "wrong");
+            key.removeAttribute("disabled");
+        }
+
+        for (let live of this.lives)  {
+            live.setAttribute("src", "images/liveHeart.png");
         }
     }
 }
