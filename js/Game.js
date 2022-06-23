@@ -13,16 +13,17 @@ class Game {
             new Phrase("Simplicity is the ultimate sophistication")
         ]; // Array of phrase objects.
         this.activePhrase = null; // Phrase object currently in play.
+        this.overlay = document.querySelector("#overlay");
     }
 
     /** Checked
      * Begins game by selecting a random phrase and displaying it to user. 
     **/
     startGame() {
-        const overlay = document.querySelector("#overlay");
+        // const overlay = document.querySelector("#overlay");
         let phrase = this.getRandomPhrase();
 
-        overlay.style.display = "none";
+        this.overlay.style.display = "none";
         this.activePhrase = phrase;            
         phrase.addPhraseToDisplay();
     }
@@ -46,7 +47,7 @@ class Game {
         let match = this.activePhrase.checkLetter(letter);
 
         button.disabled = true;
-        // console.log(button);
+        console.log(button);
 
         if (match) {
             button.classList.add("chosen");
@@ -54,7 +55,7 @@ class Game {
             this.checkForWin();
 
             if (this.checkForWin()) {
-                this.gameOver();
+                this.gameOver(true);
             }
         } else {
             button.classList.add("wrong");
@@ -72,11 +73,10 @@ class Game {
         const live = lives.find(live => live.getAttribute("src") === "images/liveHeart.png");
         
         this.missed++;
-        console.log(live);
         live.setAttribute("src", "images/lostHeart.png");
 
-        if (this.missed === 5) {
-            this.gameOver();
+        if (this.missed >= 5) {
+            this.gameOver(false);
         }
     }
 
@@ -104,7 +104,21 @@ class Game {
         }
     }
 
-    gameOver() {
-        
+    /**
+     * Displays game over message.
+     * @param {boolean} gameWon - Whether or not the user won the game.
+     */
+    gameOver(gameWon) {
+        let message = this.overlay.querySelector("#game-over-message");
+
+        this.overlay.style.display = "flex";
+
+        if (gameWon) {
+            this.overlay.className = "win";
+            message.textContent = "Great job!";         
+        } else {
+            this.overlay.className = "lose";
+            message.textContent = "Sorry, better luck next time!"
+        }
     }
 }
