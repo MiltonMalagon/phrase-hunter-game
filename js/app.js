@@ -12,6 +12,18 @@ document.querySelector("#btn__reset").addEventListener("click", () => {
     game.startGame();
 });
 
+document.addEventListener("keyup", e => {
+    e.preventDefault();
+
+    if (this.overlay.style.display === "none") {
+        for (let key of game.keys) {
+            if (key.textContent === e.key) {
+                game.handleInteraction(key);
+            }
+        }
+    }
+});
+
 /**
  * Listens for onscreen keyboard clicks.
 **/

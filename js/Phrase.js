@@ -7,7 +7,7 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
 
-    /** Checked
+    /**
      * Displays phrase on game board.
     **/
     addPhraseToDisplay() {

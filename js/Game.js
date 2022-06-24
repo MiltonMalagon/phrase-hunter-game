@@ -4,6 +4,7 @@
 
 class Game {
     constructor() {
+        // this.start = false;
         this.missed = 0; //Number of missed guesses.
         this.phrases = [
             new Phrase("Fortune favors the bold"), 
@@ -14,21 +15,23 @@ class Game {
         ]; // Array of phrase objects.
         this.activePhrase = null; // Phrase object currently in play.
         this.overlay = document.querySelector("#overlay");
+        this.keys = document.querySelectorAll("#qwerty .key");
         this.lives = Array.from(document.querySelectorAll("#scoreboard img"));
     }
 
-    /** Checked
+    /**
      * Begins game by selecting a random phrase and displaying it to user. 
     **/
     startGame() {
         let phrase = this.getRandomPhrase();
 
+        // this.start = true;
+        this.activePhrase = phrase;           
         this.overlay.style.display = "none";
-        this.activePhrase = phrase;            
         phrase.addPhraseToDisplay();
     }
 
-    /** Checked
+    /**
      * Selects random phrase from phrases property.
      * @return {Object} Phrase object chosen to be used.
     **/
@@ -65,7 +68,7 @@ class Game {
      * Checks for winning move.
      * @return {boolean} true if game has been won, false if game wasn't won.
     **/
-     checkForWin() {
+    checkForWin() {
         const showed = Array.from(document.querySelectorAll("#phrase li")).filter(letter => letter.classList.contains("show"));
         const phrase = this.activePhrase.phrase.replace(/\s/g, "");
 
@@ -113,12 +116,13 @@ class Game {
     }
 
     /**
-     * Resets game.
+     * Resets game after game is completed.
     **/
     resetGame() {
         const letters = document.querySelectorAll("#phrase li");
-        const keys = document.querySelectorAll(".key");
+        // const keys = document.querySelectorAll("#qwerty .key");
 
+        // this.start = false;
         this.missed = 0;
         this.activePhrase = null;
 
@@ -126,7 +130,7 @@ class Game {
             letter.remove();
         }
 
-        for (let key of keys) {
+        for (let key of this.keys) {
             key.classList.remove("chosen", "wrong");
             key.removeAttribute("disabled");
         }
