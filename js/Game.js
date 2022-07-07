@@ -4,13 +4,12 @@
 
 class Game {
     constructor() {
-        // this.start = false;
         this.missed = 0; //Number of missed guesses.
         this.phrases = [
-            new Phrase("Fortune favors the bold"), 
-            new Phrase("Genius is eternal patience"), 
-            new Phrase("Practice makes perfect"), 
-            new Phrase("Knowledge is power"), 
+            new Phrase("Fortune favors the bold"),
+            new Phrase("Genius is eternal patience"),
+            new Phrase("Practice makes perfect"),
+            new Phrase("Knowledge is power"),
             new Phrase("Simplicity is the ultimate sophistication")
         ]; // Array of phrase objects.
         this.activePhrase = null; // Phrase object currently in play.
@@ -25,8 +24,7 @@ class Game {
     startGame() {
         let phrase = this.getRandomPhrase();
 
-        // this.start = true;
-        this.activePhrase = phrase;           
+        this.activePhrase = phrase;
         this.overlay.style.display = "none";
         phrase.addPhraseToDisplay();
     }
@@ -53,6 +51,7 @@ class Game {
 
         if (match) {
             button.classList.add("chosen");
+            button.classList.add("button-hover"); /* custom */
             this.activePhrase.showMatchedLetter(letter);
 
             if (this.checkForWin()) {
@@ -60,6 +59,7 @@ class Game {
             }
         } else {
             button.classList.add("wrong");
+            button.classList.add("button-hover"); /* custom */
             this.removeLife();
         }
     }
@@ -86,7 +86,7 @@ class Game {
     **/
     removeLife() {
         const live = this.lives.find(live => live.getAttribute("src") === "images/liveHeart.png");
-        
+
         this.missed++;
         live.setAttribute("src", "images/lostHeart.png");
 
@@ -106,11 +106,13 @@ class Game {
 
         if (gameWon) {
             this.overlay.className = "win";
-            message.textContent = "Great job!";
-            this.resetGame();       
+            // message.textContent = "Great job!";
+            message.textContent = "Yeah! You're a great hunter!";
+            this.resetGame();
         } else {
             this.overlay.className = "lose";
-            message.textContent = "Sorry, better luck next time!";
+            // message.textContent = "Sorry, better luck next time!";
+            message.textContent = "Haha! You've been hunted instead!";
             this.resetGame();
         }
     }
@@ -120,9 +122,7 @@ class Game {
     **/
     resetGame() {
         const letters = document.querySelectorAll("#phrase li");
-        // const keys = document.querySelectorAll("#qwerty .key");
 
-        // this.start = false;
         this.missed = 0;
         this.activePhrase = null;
 
@@ -131,7 +131,7 @@ class Game {
         }
 
         for (let key of this.keys) {
-            key.classList.remove("chosen", "wrong");
+            key.classList.remove("chosen", "wrong", "button-hover");
             key.removeAttribute("disabled");
         }
 
