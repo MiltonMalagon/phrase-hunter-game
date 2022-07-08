@@ -12,6 +12,7 @@
   --color-keys: #37474F;
   --color-keys-hover: #B4B3B3; /* custom */
   --color-keys-light: #E5E5E5;
+  --color-heading: #D04141; /* custom */
   --font-size-large: 60px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
@@ -26,6 +27,7 @@
 }
 
 body {
+  background-color: #FAFAFA; /* custom */
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
@@ -62,8 +64,8 @@ button {
   cursor: pointer;
 }
 
-/* Button custom hover style */
-.button-hover {
+/* Keyboard and Reset buttons custom hover styles */
+.button-hover, #btn__reset:hover {
   color: #FFF;
   background-color: var(--color-keys-hover);
   box-shadow: 0px 3px 5px #37474FAA;
@@ -96,9 +98,8 @@ button {
 
 .header {
   /*color: #3a3f58;*/
-  color: #D04141; /* custom */
+  color: var(--color-heading); /* custom */
 }
-
 
 /* Phrase */
 
@@ -129,7 +130,7 @@ button {
   margin-right: 2px;
   border-radius: 5px;
   -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  animation-duration: .25s;
 }
 
 
@@ -185,14 +186,24 @@ button {
   border-radius: 5px;
 }
 
+/* Custom animation learned from W3Schools -- https://www.w3schools.com/css/css3_animations.asp */
+@keyframes heading {
+  from {font-size: var(--font-size-medium);}
+  to {font-size: var(--font-size-large);}
+}
+
 .title {
   /*color: #FFF;*/
-  color: #D04141; /* custom */
+  color: var(--color-heading); /* custom */
+  animation-name: heading; /* custom */
+  animation-duration: .3s; /* custom */
+  animation-timing-function: ease-out; /* custom */
+  position: relative; /* custom */
 }
 
 .start {
   /*background-color: #3a3f58;*/
-  background-color: #0D101E; /* custom */
+  background-color: #171A29; /* custom */
 }
 
 .start a {
@@ -200,7 +211,8 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+  /* background-color: var(--color-win); */
+  background-color: #A5E4AD; /*custom*/
 }
 
 .win a {
@@ -208,8 +220,8 @@ button {
 }
 
 .lose {
-  /*background-color: #f5785f;*/
-  background-color: #960C0C; /* custom */
+  /* background-color: #f5785f; */
+  background-color: #FFADAD; /* custom */
 }
 
 .lose a {

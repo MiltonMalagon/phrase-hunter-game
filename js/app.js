@@ -13,7 +13,7 @@ document.querySelector("#btn__reset").addEventListener("click", () => {
 });
 
 /**
- * Listens for onscreen keyboard clicks.
+ * Listens to mouse hover and onscreen keyboard clicks.
 **/
 document.querySelectorAll("#qwerty .key").forEach(key => {
     key.addEventListener("mouseover", e => {
@@ -36,7 +36,7 @@ document.querySelectorAll("#qwerty .key").forEach(key => {
 });
 
 /**
- * Listens for keystrokes.
+ * Listens to keystrokes.
 **/
 document.addEventListener("keyup", e => {
     e.preventDefault();

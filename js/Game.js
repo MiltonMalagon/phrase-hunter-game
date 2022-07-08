@@ -51,7 +51,7 @@ class Game {
 
         if (match) {
             button.classList.add("chosen");
-            button.classList.add("button-hover"); /* custom */
+            button.classList.add("button-hover"); // custom
             this.activePhrase.showMatchedLetter(letter);
 
             if (this.checkForWin()) {
@@ -59,7 +59,7 @@ class Game {
             }
         } else {
             button.classList.add("wrong");
-            button.classList.add("button-hover"); /* custom */
+            button.classList.add("button-hover"); // custom 
             this.removeLife();
         }
     }
@@ -112,7 +112,7 @@ class Game {
         } else {
             this.overlay.className = "lose";
             // message.textContent = "Sorry, better luck next time!";
-            message.textContent = "Haha! You've been hunted instead!";
+            message.textContent = "Haha! You've been hunted!";
             this.resetGame();
         }
     }
