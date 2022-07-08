@@ -5,7 +5,7 @@
 let game;
 
 /**
- * Listens for start button clicks.
+ * Listens to start button clicks.
 **/
 document.querySelector("#btn__reset").addEventListener("click", () => {
     game = new Game();
@@ -19,13 +19,13 @@ document.querySelectorAll("#qwerty .key").forEach(key => {
     key.addEventListener("mouseover", e => {
         let button = e.target;
 
-        button.classList.add("button-hover"); 
+        button.classList.add("button-hover");
     });
 
     key.addEventListener("mouseout", e => {
         let button = e.target;
 
-        button.classList.remove("button-hover"); 
+        button.classList.remove("button-hover");
     });
 
     key.addEventListener("click", e => {

@@ -1,6 +1,7 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
 
+
 /* Variables */
 
 :root {
@@ -17,6 +18,7 @@
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
 }
+
 
 /* main */
 
@@ -94,12 +96,14 @@ button {
   margin-top: 15px;
 }
 
+
 /* Title */
 
 .header {
   /*color: #3a3f58;*/
   color: var(--color-heading); /* custom */
 }
+
 
 /* Phrase */
 
@@ -117,8 +121,6 @@ button {
 .space {
   width: 15px;
 }
-
-
 
 .show {
   color: #fff;
@@ -192,13 +194,15 @@ button {
   to {font-size: var(--font-size-large);}
 }
 
+/* Custom title style */
 .title {
   /*color: #FFF;*/
-  color: var(--color-heading); /* custom */
-  animation-name: heading; /* custom */
-  animation-duration: .3s; /* custom */
-  animation-timing-function: ease-out; /* custom */
-  position: relative; /* custom */
+  color: var(--color-heading);
+  animation-name: heading;
+  animation-duration: .3s;
+  -webkit-animation-duration: .3s;
+  animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
 }
 
 .start {

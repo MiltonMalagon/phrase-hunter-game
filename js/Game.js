@@ -4,22 +4,28 @@
 
 class Game {
     constructor() {
-        this.missed = 0; //Number of missed guesses.
+        // Number of missed guesses.
+        this.missed = 0;
+        // Array of phrase objects.
         this.phrases = [
             new Phrase("Fortune favors the bold"),
             new Phrase("Genius is eternal patience"),
             new Phrase("Practice makes perfect"),
             new Phrase("Knowledge is power"),
             new Phrase("Simplicity is the ultimate sophistication")
-        ]; // Array of phrase objects.
-        this.activePhrase = null; // Phrase object currently in play.
+        ];
+        // Phrase object currently in play.
+        this.activePhrase = null;
+        // Start screen overlay.
         this.overlay = document.querySelector("#overlay");
+        // Oncreen keyboard keys.
         this.keys = document.querySelectorAll("#qwerty .key");
+        // Scoreboard hearts.
         this.lives = Array.from(document.querySelectorAll("#scoreboard img"));
     }
 
     /**
-     * Begins game by selecting a random phrase and displaying it to user. 
+     * Begins game by selecting a random phrase and displaying it to user.
     **/
     startGame() {
         let phrase = this.getRandomPhrase();
@@ -59,7 +65,7 @@ class Game {
             }
         } else {
             button.classList.add("wrong");
-            button.classList.add("button-hover"); // custom 
+            button.classList.add("button-hover"); // custom
             this.removeLife();
         }
     }
