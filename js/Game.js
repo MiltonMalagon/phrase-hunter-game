@@ -113,12 +113,12 @@ class Game {
         if (gameWon) {
             this.overlay.className = "win";
             // message.textContent = "Great job!";
-            message.textContent = "Yeah! You're a great hunter!";
+            message.textContent = "Yeah! You're a great hunter!"; // custom
             this.resetGame();
         } else {
             this.overlay.className = "lose";
             // message.textContent = "Sorry, better luck next time!";
-            message.textContent = "Haha! You've been hunted!";
+            message.textContent = "Haha! You've been hunted!"; // custom
             this.resetGame();
         }
     }

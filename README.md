@@ -91,8 +91,30 @@ The app file starts the game and listens to click and keystroke interactivities.
         Listens to keystrokes and handles interaction.
 
 #### Extra
-Custom CSS styles.
+Custom CSS styles (changes are described as /* custom */).
+
+- Font styles:
+
+    - Font family 'Carter One' applied to the game - "https://fonts.googleapis.com/css2?family=Carter+One&display=swap"
+
+- Animation styles:
+
+    - Animation applied to game title "Phrase Hunter" - "https://www.w3schools.com/css/css3_animations.asp"
 
 - Color styles:
 
-    - "phrase" - Actual phrase the Phra
+    - Color applied to title and heading.
+    - Color applied to buttons and keys when in hover state.
+    - Color applied to keys when keystrokes occur.
+    - Background color applied to buttons and keys when in hover state.
+    - Background color applied to keys when keystrokes occur.
+    - Background colors applied to body and overlay screens.
+
+- Shadow styles:
+
+    - Box shadow applied to buttons and keys when in hover state.
+    - Box shadow applied to keys when keystrokes occur.
+
+- Messages:
+
+    - Custom messages when game is won or lost.
