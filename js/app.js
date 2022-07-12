@@ -43,7 +43,7 @@ document.addEventListener("keyup", e => {
 
     if (this.overlay.style.display === "none") {
         for (let key of game.keys) {
-            if (key.textContent === e.key) {
+            if (key.textContent === e.key && !key.hasAttribute("disabled")) {
                 game.handleInteraction(key);
             }
         }
