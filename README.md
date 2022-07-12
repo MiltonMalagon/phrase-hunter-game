@@ -16,9 +16,9 @@ The Game class contains methods for starting and ending the game, and handling i
     - "missed" - Tracks the number of missed guesses by the player.
     - "phrases" - Array of Phrase objects.
     - "activePhrase" - Phrase object currently in play.
-    - "overlay" - Start screen overlay.
-    - "keys" - Oncreen keyboard keys.
-    - "lives" - Scoreboard hearts.
+    - "overlay" - Start screen overlay. /* custom */
+    - "keys" - Oncreen keyboard keys. /* custom */
+    - "lives" - Scoreboard hearts. /* custom */
 
 - Class methods:
 

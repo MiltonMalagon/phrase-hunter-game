@@ -17,11 +17,11 @@ class Game {
         // Phrase object currently in play.
         this.activePhrase = null;
         // Start screen overlay.
-        this.overlay = document.querySelector("#overlay");
+        this.overlay = document.querySelector("#overlay"); // custom
         // Oncreen keyboard keys.
-        this.keys = document.querySelectorAll("#qwerty .key");
+        this.keys = document.querySelectorAll("#qwerty .key"); // custom
         // Scoreboard hearts.
-        this.lives = Array.from(document.querySelectorAll("#scoreboard img"));
+        this.lives = Array.from(document.querySelectorAll("#scoreboard img")); // custom
     }
 
     /**
