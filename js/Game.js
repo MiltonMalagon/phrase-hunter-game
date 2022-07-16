@@ -30,9 +30,9 @@ class Game {
     startGame() {
         let phrase = this.getRandomPhrase();
 
-        this.activePhrase = phrase;
         this.overlay.style.display = "none";
-        phrase.addPhraseToDisplay();
+        this.activePhrase = phrase;
+        this.activePhrase.addPhraseToDisplay();
     }
 
     /**
